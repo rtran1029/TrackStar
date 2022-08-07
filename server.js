@@ -34,27 +34,27 @@ function firstPrompt() {
     .prompt({
       type: "list",
       name: "task",
-      message: "Would you like to do?",
+      message: "How can i assist you?",
       choices: [
-        "View Employees",
-        "View Employees by Department",
-        "Add Employee",
+        "Show List of Employees",
+        "View by Department",
+        "Onboard Employee",
         "Remove Employees",
         "Update Employee Role",
         "Add Role",
-        "End"]
+        "Quit"]
     })
     .then(function ({ task }) {
       switch (task) {
-        case "View Employees":
+        case "Show List of Employees":
           viewEmployee();
           break;
 
-        case "View Employees by Department":
+        case "View by Department":
           viewEmployeeByDepartment();
           break;
       
-        case "Add Employee":
+        case "Onboard Employee":
           addEmployee();
           break;
 
@@ -70,7 +70,7 @@ function firstPrompt() {
           addRole();
           break;
 
-        case "End":
+        case "Quit":
           connection.end();
           break;
       }
@@ -272,7 +272,6 @@ function promptDelete(deleteEmployeeChoices) {
     });
 }
 
-//"Update Employee Role" / UPDATE,
 function updateEmployeeRole() { 
   employeeArray();
 
@@ -347,7 +346,6 @@ function promptEmployeeRole(employeeChoices, roleChoices) {
     .then(function (answer) {
 
       var query = `UPDATE employee SET role_id = ? WHERE id = ?`
-      // when finished prompting, insert a new item into the db with that info
       connection.query(query,
         [ answer.roleId,  
           answer.employeeId
@@ -365,7 +363,6 @@ function promptEmployeeRole(employeeChoices, roleChoices) {
 
 
 
-//"Add Role" / CREATE: INSERT INTO
 function addRole() {
 
   var query =
@@ -380,7 +377,6 @@ function addRole() {
   connection.query(query, function (err, res) {
     if (err) throw err;
 
-    // (callbackfn: (value: T, index: number, array: readonly T[]) => U, thisArg?: any)
     const departmentChoices = res.map(({ id, name }) => ({
       value: id, name: `${id} ${name}`
     }));
