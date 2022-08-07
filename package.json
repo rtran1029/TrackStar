@@ -1,0 +1,24 @@
+{
+  "name": "trackstar",
+  "version": "1.0.0",
+  "description": "Employee Tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtran1029/TrackStar.git"
+  },
+  "author": "Richard T",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rtran1029/TrackStar/issues"
+  },
+  "homepage": "https://github.com/rtran1029/TrackStar#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^7.3.3",
+    "mysql": "^2.18.1"
+  }
+}
